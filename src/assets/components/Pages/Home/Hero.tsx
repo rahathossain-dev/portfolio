@@ -7,7 +7,7 @@ export default function Hero() {
         <div className="container mx-auto px-6 text-center z-10">
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-4 opacity-0 transform translate-y-10"
             id="hero-title">
-            Alexander Mitchell
+            Rahat Hossain
           </h1>
           <div className="typewriter-container h-12 flex justify-center items-center mb-8">
             <h2 className="text-2xl md:text-3xl font-medium text-gray-700">
