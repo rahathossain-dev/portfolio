@@ -54,16 +54,7 @@ export default function App() {
       }
     };
 
-    const handleResize = () => {
-      const canvasContainer = document.getElementById("canvas-container");
-      if (canvasContainer) {
-        const renderer = canvasContainer.querySelector("canvas")?.getContext("webgl");
-        if (renderer) {
-          renderer.canvas.width = window.innerWidth;
-          renderer.canvas.height = window.innerHeight;
-        }
-      }
-    };
+
 
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -74,7 +65,6 @@ export default function App() {
     document.addEventListener("mousedown", handleMouseDown);
     document.addEventListener("mouseup", handleMouseUp);
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -99,64 +89,6 @@ export default function App() {
         onEnter: () => circle.classList.add("animate"),
       });
     });
-
-    const initThreeJS = () => {
-      const container = document.getElementById("canvas-container");
-      if (!container) return;
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 30;
-
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(window.devicePixelRatio);
-      container.appendChild(renderer.domElement);
-
-      const particlesGeometry = new THREE.BufferGeometry();
-      const particlesCount = 1500;
-      const posArray = new Float32Array(particlesCount * 3);
-
-      for (let i = 0; i < particlesCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 50;
-      }
-
-      particlesGeometry.setAttribute("position", new THREE.BufferAttribute(posArray, 3));
-
-      const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.1,
-        color: 0x6366f1,
-        transparent: true,
-        opacity: 0.8,
-      });
-
-      const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-      scene.add(particlesMesh);
-
-      let mouseX = 0;
-      let mouseY = 0;
-
-      const onDocumentMouseMove = (event: MouseEvent) => {
-        mouseX = (event.clientX - window.innerWidth / 2) / 100;
-        mouseY = (event.clientY - window.innerHeight / 2) / 100;
-      };
-
-      document.addEventListener("mousemove", onDocumentMouseMove);
-
-      const animate = () => {
-        requestAnimationFrame(animate);
-
-        particlesMesh.rotation.x += 0.0005;
-        particlesMesh.rotation.y += 0.0005;
-
-        particlesMesh.rotation.x += mouseY * 0.0005;
-        particlesMesh.rotation.y += mouseX * 0.0005;
-
-        renderer.render(scene, camera);
-      };
-
-      animate();
-    };
 
     const initAvatar = () => {
       const avatarContainer = document.getElementById("avatar-container");
@@ -224,7 +156,6 @@ export default function App() {
       window.addEventListener("resize", handleResize);
     };
 
-    initThreeJS();
     initAvatar();
 
     return () => {
@@ -235,7 +166,6 @@ export default function App() {
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
     };
   }, []);
 

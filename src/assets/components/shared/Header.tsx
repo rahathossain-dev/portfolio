@@ -15,16 +15,16 @@ export default function Header() {
   }, [hamburger])
   return (
     <div>
-      <header className="fixed top-0 left-0 w-full glass-nav z-50">
+      <header className="fixed top-0 left-0 w-full glass-nav bg-white dark:bg-transparent z-50">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#" className="text-2xl font-['Pacifico'] text-gray-900">Rahat Hossain.</a>
+          <a href="#" className="text-2xl font-['Pacifico'] text-gray-900 dark:text-white">Rahat Hossain.</a>
 
           <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-primary transition-colors">Home</a>
-            <a href="#about" className="text-gray-700 hover:text-primary transition-colors">About</a>
-            <a href="#projects" className="text-gray-700 hover:text-primary transition-colors">Projects</a>
-            <a href="#skills" className="text-gray-700 hover:text-primary transition-colors">Skills</a>
-            <a href="#contact" className="text-gray-700 hover:text-primary transition-colors">Contact</a>
+            <a href="#home" className="text-gray-700 hover:text-primary transition-colors dark:text-white">Home</a>
+            <a href="#about" className="text-gray-700 hover:text-primary transition-colors dark:text-white">About</a>
+            <a href="#projects" className="text-gray-700 hover:text-primary transition-colors dark:text-white">Projects</a>
+            <a href="#skills" className="text-gray-700 hover:text-primary transition-colors dark:text-white">Skills</a>
+            <a href="#contact" className="text-gray-700 hover:text-primary transition-colors dark:text-white">Contact</a>
           </nav>
 
           <div className="md:hidden hamburger" onClick={() => setHamburger(!hamburger)}>
