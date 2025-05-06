@@ -61,8 +61,7 @@ export default function Footer() {
             &copy; 2025 Alexander Mitchell. All rights reserved.
           </p>
           <p className="text-gray-500 text-sm mt-4 md:mt-0">
-            Designed & Developed with <span className="text-red-500">❤</span> and
-            WebGL
+            Designed & Developed By Rahat Hossain
           </p>
         </div>
       </div>
